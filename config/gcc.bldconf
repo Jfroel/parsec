@@ -40,11 +40,11 @@ case "${OSTYPE}" in
   # Linux + default case
 
   # CC_HOME is installation root of the C compiler
-  export CC_HOME="/usr"
+  export CC_HOME=""
   # BINUTIL_HOME is installation root of the GNU binutils
-  export BINUTIL_HOME="/usr"
+  export BINUTIL_HOME=""
   # GNUTOOL_HOME is installation root of the GNU tools
-  export GNUTOOL_HOME="/usr"
+  export GNUTOOL_HOME=""
   # BINARY_PREFIX is the string which is used as prefix for the GNU binaries
   export BINARY_PREFIX=""
 ;;
