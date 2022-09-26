@@ -1,6 +1,39 @@
-PARSEC Benchmark Suite 3.0
+PARSEC Benchmark Suite 3.0 for RISC-V
 ==========================
 
+Forked from: https://parsec.cs.princeton.edu/ and modified to be used with our RISC-V multicore 
+benchmark repo: https://github.com/muwyse/rvmc-bench
+
+The main changes surround, implementing a Makefile for easier submodule interations.
+The Makefile handles PARSEC's enviormental variables but **you may need to change the paths of 
+`CC_DIR`, `UTIL_DIR`, and `GNUTOOL_DIR`.** See config/gcc.bldconf for more information.
+
+The following is a great resource for fixing various issues with the base PARSEC-3.0 suite:
+https://yulistic.gitlab.io/2016/05/parsec-3.0-installation-issues/
+
+The __mbstate_t conflict has already been fixed.
+If you get the smine.pod error just run the included `fix.sh` script.
+
+Another great RISC-V PARSEC port is: https://github.com/csail-csg/parsec
+We cross referenced our working 8 benchmarks with their port and seem to have the same results. 
+
+The following benchmarks compile in RISC-V:
+- blackscholes
+- bodytrack
+- facesim
+- ferret
+- fluidanimate
+- freqmine
+- swaptions
+- streamcluster
+
+See our RVMC-BENCH repo for compiling and running the benchmarks.
+
+Note that we switched swaptions to pthreads instead of tbb.
+
+Below is the original readme
+
+-----------------------------------------------------------------------------
 
 1.) Overview
 
