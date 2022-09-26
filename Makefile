@@ -4,9 +4,9 @@ export PARSECDIR := $(TOP)
 export PATH := $(TOP)/bin:$(PATH)
 export MANPATH := $(TOP)/man:$(MANPATH)
 INSTALL_DIR ?= $(TOP)/../../install
-EXT ?= riscv
+export EXT ?= riscv
 ifeq ($(EXT),x86)
-export WORKING_SUITES = blackscholes bodytrack facesim ferret fluidanimate freqmine streamcluster swaptions vips canneal dedup raytrace netdedup netferret netstreamcluster splash2 splash2x
+WORKING_SUITES = blackscholes bodytrack facesim ferret fluidanimate freqmine streamcluster swaptions vips canneal dedup raytrace
 export TOOLCHAIN_PREFIX=
 # check these paths, for most users this just needs to be "usr/"
 export CC_DIR=
@@ -16,7 +16,7 @@ export GNUTOOL_DIR=
 export EMULATOR=
 export build_host=
 else
-export WORKING_SUITES = blackscholes bodytrack facesim ferret fluidanimate freqmine streamcluster swaptions
+WORKING_SUITES = blackscholes bodytrack facesim ferret fluidanimate freqmine streamcluster swaptions
 export TOOLCHAIN_PREFIX=riscv64-unknown-linux-gnu-
 # don't change
 export CC_DIR=$(INSTALL_DIR)

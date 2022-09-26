@@ -709,7 +709,7 @@ Examples (3) [NEW: SPLASH-2 Suite and SPLASH-2x Suite]:
 
   # Define PARSECPLAT, if not set by user
   if [ -z "${PARSECPLAT}" ]; then
-    PARSECPLAT=${hostostype}.${build}
+    PARSECPLAT=${EXT}-${hostostype}.${build}
   else
     PARSECPLAT=${PARSECPLAT}.${build}
   fi
