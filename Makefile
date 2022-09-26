@@ -37,7 +37,7 @@ build_benchmarks: $(addprefix build_,$(WORKING_BENCHMARKS))
 build_%: 
 	parsecmgmt -a build -p $*
 
-run_benchmarks: $(addprefix run_,$(WORKING_BENCHMARKS)
+run_benchmarks: $(addprefix run_,$(WORKING_BENCHMARKS))
 	echo "done"
 
 run_%:
