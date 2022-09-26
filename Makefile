@@ -4,6 +4,7 @@ export PARSECDIR := $(TOP)
 export PATH := $(TOP)/bin:$(PATH)
 export MANPATH := $(TOP)/man:$(MANPATH)
 INSTALL_DIR ?= $(TOP)/../../install
+LOG_DIR ?=  $(TOP)/../../outputs
 export EXT ?= riscv
 ifeq ($(EXT),x86)
 WORKING_SUITES = blackscholes bodytrack facesim ferret fluidanimate freqmine streamcluster swaptions vips canneal dedup raytrace
@@ -42,7 +43,7 @@ run_suites: $(addprefix run_,$(WORKING_SUITES))
 	echo "done"
 
 run_%:
-	parsecmgmt -a run -p $*
+	parsecmgmt -a run -p $* 2>&1 | tee -i $(LOG_DIR)/parsec-$(EXT)-$*.log
 	
 %:
 	parsecmgmt -a $@
