@@ -709,7 +709,7 @@ Examples (3) [NEW: SPLASH-2 Suite and SPLASH-2x Suite]:
 
   # Define PARSECPLAT, if not set by user
   if [ -z "${PARSECPLAT}" ]; then
-    PARSECPLAT=${hostostype}.${build}
+    PARSECPLAT=${EXT}-${hostostype}.${build}
   else
     PARSECPLAT=${PARSECPLAT}.${build}
   fi
@@ -983,7 +983,8 @@ function build_package {
 
   # Run configure
   if [ -x ${pkgbuildsrcdir}/configure ]; then
-    local build_conf_pkg="${build_conf} ${build_conf_global}"
+  echo "||||||||||||||||||| CONFIG FILE |||||||||||||||||||||||||||"
+    local build_conf_pkg="${build_conf} ${build_conf_global}" 
     # Current pwd is $pkgobjdir
     if [ "${pkgobjdir}" == "${pkgbuildsrcdir}" ]; then
       local configcmd="env ${build_env} ./configure ${build_conf_pkg}"
@@ -1008,6 +1009,7 @@ function build_package {
 
   # Run make
   local makecmd="env ${build_env} ${MAKE}"
+  echo "||||||||||||||||||| MAKEFILE |||||||||||||||||||||||||||"
   eval echo "${oprefix} Running \'$makecmd\':" 2>&1 \| ${TEE} ${log}
   eval \( ${makecmd} 2>&1 \) 2>&1 \| ${TEE} ${log} \; retval=\${PIPESTATUS[0]}
   if [ "$retval" -ne "0" ]; then
@@ -1216,7 +1218,7 @@ function run_benchmark {
       UPTCPIP_RX_THREADS=1
       export UPTCPIP_RX_THREADS
   fi 
-  eval cmd="\"${submit} ${bmexec} ${bmexec_args}\""
+  eval cmd="\"${submit} ${EMULATOR} ${bmexec} ${bmexec_args}\""
   echo "${oprefix} Running '${cmd}':" | ${TEE} ${log}
   echo "${oprefix} [---------- Beginning of output ----------]" | ${TEE} ${log}
   (eval ${cmd} 2>&1) 2>&1 | ${TEE} ${bmrundir}/benchmark.out | ${TEE} ${log}
@@ -1486,6 +1488,8 @@ case ${action} in
     exit 0;;
   "uninstall"     )
     echo "${oprefix} Removing installations for build '${PARSECPLAT}':"
+    pkgs="${pkgs} parsec.cmake parsec.glib parsec.gsl parsec.hooks parsec.libjpeg parsec.libtool parsec.libxml2 parsec.mesa parsec.parmacs parsec.ssl parsec.tbblib parsec.uptcpip parsec.yasm parsec.zlib"
+    echo "${pkgs}"
     for package in ${pkgs}; do
       # Load package configuration
       source ${PARSECDIR}/config/packages/${package}.pkgconf

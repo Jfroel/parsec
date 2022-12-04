@@ -40,20 +40,20 @@ case "${OSTYPE}" in
   # Linux + default case
 
   # CC_HOME is installation root of the C compiler
-  export CC_HOME="/usr"
+  export CC_HOME="${CC_DIR}"
   # BINUTIL_HOME is installation root of the GNU binutils
-  export BINUTIL_HOME="/usr"
+  export BINUTIL_HOME="${UTIL_DIR}"
   # GNUTOOL_HOME is installation root of the GNU tools
-  export GNUTOOL_HOME="/usr"
+  export GNUTOOL_HOME="${GNUTOOL_DIR}"
   # BINARY_PREFIX is the string which is used as prefix for the GNU binaries
-  export BINARY_PREFIX=""
+  export BINARY_PREFIX="${TOOLCHAIN_PREFIX}"
 ;;
 esac
 
 # Compilers and preprocessors
-export CC="${CC_HOME}/bin/gcc"
-export CXX="${CC_HOME}/bin/g++"
-export CPP="${CC_HOME}/bin/cpp"
+export CC="${CC_HOME}/bin/${BINARY_PREFIX}gcc"
+export CXX="${CC_HOME}/bin/${BINARY_PREFIX}g++"
+export CPP="${CC_HOME}/bin/${BINARY_PREFIX}cpp"
 export CXXCPP=""
 
 # GNU Binutils
@@ -64,8 +64,8 @@ export RANLIB="${BINUTIL_HOME}/bin/${BINARY_PREFIX}ranlib"
 export STRIP="${BINUTIL_HOME}/bin/${BINARY_PREFIX}strip"
 
 # GNU Tools
-export M4="${GNUTOOL_HOME}/bin/${BINARY_PREFIX}m4"
-export MAKE="${GNUTOOL_HOME}/bin/${BINARY_PREFIX}make"
+export M4="${GNUTOOL_HOME}/bin/m4"
+export MAKE="${GNUTOOL_HOME}/bin/make"
 
 # Flags for increased portability of binaries
 PORTABILITY_FLAGS="-static-libgcc -Wl,--hash-style=both,--as-needed"

@@ -25,3 +25,4 @@ pkg_aliases="all libs"
 # Citations for this package (requires matching citation file)
 pkg_cite="bienia11parsec"
 
+source ${PARSECDIR}/config/gcc-tbb.bldconf

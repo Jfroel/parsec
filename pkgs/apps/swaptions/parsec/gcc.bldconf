@@ -3,5 +3,6 @@
 # gcc.bldconf - configuration file for PARSEC
 
 # Default parallelization is pthreads
-source ${PARSECDIR}/pkgs/apps/swaptions/parsec/gcc-tbb.bldconf
+# switch back to pthreads from ttb for riscv build
+source ${PARSECDIR}/pkgs/apps/swaptions/parsec/gcc-pthreads.bldconf
 

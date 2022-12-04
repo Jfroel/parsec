@@ -97,8 +97,13 @@ typedef	__uint32_t	__fixpt_t;	/* fixed point number */
  * mbstate_t is an opaque object to keep conversion state during multibyte
  * stream conversions.
  */
+
+// the following union causes a conflict between system declaration and parsec library
+// the following #define essentially comments it out.
+#define __mbstate_t_defined 0
+
 #ifndef __mbstate_t_defined
-# define __mbstate_t_defined    1
+#define __mbstate_t_defined    1
 typedef union {
 	char		__mbstate8[128];
 	__int64_t	_mbstateL;	/* for alignment */

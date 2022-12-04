@@ -149,6 +149,7 @@ Further information on the algorithms described in this section can be
 found in the following book,
 
 @itemize @asis
+@item
 C. de Boor, @cite{A Practical Guide to Splines} (1978), Springer-Verlag,
 ISBN 0-387-90356-9.
 @end itemize
