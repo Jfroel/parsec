@@ -18,7 +18,7 @@ export EMULATOR=
 export build_host=
 else
 WORKING_BENCHMARKS = blackscholes bodytrack facesim ferret fluidanimate freqmine streamcluster swaptions
-export TOOLCHAIN_PREFIX=$(RV64_TOOLCHAIN_PREFIX)
+export TOOLCHAIN_PREFIX=riscv64-unknown-linux-gnu-
 # don't change
 export CC_DIR=$(INSTALL_DIR)
 export UTIL_DIR=$(INSTALL_DIR)
